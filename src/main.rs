@@ -1,6 +1,6 @@
 use crate::arguments::{FlashCardCli, FlashCardCommand};
 use clap::Parser;
-use flash_card_parser::{ParseError, Topic};
+use flash_card_parser::Topic;
 use std::fs;
 
 mod arguments;
