@@ -9,5 +9,10 @@ pub(crate) struct FlashCardCli {
 
 #[derive(Debug, Subcommand)]
 enum FlashCardCommand {
-    Convert { card: PathBuf, csv: PathBuf },
+    Convert {
+        #[arg(short, long)]
+        card: PathBuf,
+        #[arg(short, long)]
+        csv: PathBuf,
+    },
 }
