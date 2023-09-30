@@ -1,5 +1,6 @@
 use crate::arguments::{FlashCardCli, FlashCardCommand};
 use clap::Parser;
+use flash_card_parser::{ParseError, Topic};
 use std::fs;
 
 mod arguments;
@@ -9,6 +10,11 @@ fn main() -> anyhow::Result<()> {
     match arguments.command() {
         FlashCardCommand::Convert { card, csv } => {
             let file = fs::read_to_string(card)?;
+            let result = Topic::from_str(&file);
+            let topic = match result {
+                Ok(topic) => topic,
+                Err(error) => panic!("{}", error),
+            };
         }
     }
     Ok(())
