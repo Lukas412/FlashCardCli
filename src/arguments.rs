@@ -7,8 +7,14 @@ pub(crate) struct FlashCardCli {
     command: FlashCardCommand,
 }
 
+impl FlashCardCli {
+    pub(crate) fn command(&self) -> &FlashCardCommand {
+        &self.command
+    }
+}
+
 #[derive(Debug, Subcommand)]
-enum FlashCardCommand {
+pub(crate) enum FlashCardCommand {
     Convert {
         #[arg(short, long)]
         card: PathBuf,

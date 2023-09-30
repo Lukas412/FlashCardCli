@@ -1,5 +1,11 @@
+use crate::arguments::{FlashCardCli, FlashCardCommand};
+use clap::Parser;
+
 mod arguments;
 
 fn main() {
-    println!("Hello, world!");
+    let arguments = FlashCardCli::parse();
+    match arguments.command() {
+        FlashCardCommand::Convert { card, csv } => {}
+    }
 }
