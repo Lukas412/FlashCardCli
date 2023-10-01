@@ -34,12 +34,19 @@ fn convert_file(path: impl AsRef<Path>) -> anyhow::Result<()> {
 }
 
 fn convert_file_to_output(path: impl AsRef<Path>, output: impl AsRef<Path>) -> anyhow::Result<()> {
+    let path = path.as_ref();
+    let output = output.as_ref();
+    println!(
+        "converting \"{}\" to \"{}\" ...",
+        path.display(),
+        output.display()
+    );
+
     let file = fs::read_to_string(path)?;
     let topic = match Topic::from_str(file.as_str()) {
         Ok(topic) => topic,
         Err(error) => panic!("{:?}", error),
     };
-    println!("{}", &topic);
 
     let file = File::options()
         .write(true)
