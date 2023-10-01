@@ -21,11 +21,12 @@ fn main() -> anyhow::Result<()> {
 }
 
 fn convert_all(path: impl AsRef<Path>) -> anyhow::Result<()> {
-    for file in fs::read_dir(path)? {
-        let file = file?;
-        convert_file(file.path())?
-    }
-    Ok(())
+    fs::read_dir(path)?
+        .flatten()
+        .map(|file| file.path())
+        .filter(|path| path.ends_with(".card"))
+        .map(convert_file)
+        .collect()
 }
 
 fn convert_file(path: impl AsRef<Path>) -> anyhow::Result<()> {
