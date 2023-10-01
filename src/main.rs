@@ -15,6 +15,7 @@ fn main() -> anyhow::Result<()> {
                 Ok(topic) => topic,
                 Err(error) => panic!("{}", error),
             };
+            println!("{:?}", &topic);
         }
     }
     Ok(())
