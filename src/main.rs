@@ -24,7 +24,12 @@ fn convert_all(path: impl AsRef<Path>) -> anyhow::Result<()> {
     fs::read_dir(path)?
         .flatten()
         .map(|file| file.path())
-        .filter(|path| path.ends_with(".card"))
+        .filter(|path| {
+            matches!(
+                path.extension().and_then(|extension| extension.to_str()),
+                Some("card")
+            )
+        })
         .map(convert_file)
         .collect()
 }
