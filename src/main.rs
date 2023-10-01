@@ -13,9 +13,9 @@ fn main() -> anyhow::Result<()> {
             let result = Topic::from_str(&file);
             let topic = match result {
                 Ok(topic) => topic,
-                Err(error) => panic!("{}", error),
+                Err(error) => panic!("{:?}", error),
             };
-            println!("{:?}", &topic);
+            println!("{}", &topic);
         }
     }
     Ok(())
