@@ -15,7 +15,7 @@ fn main() -> anyhow::Result<()> {
             path,
             output: Some(output),
         } => convert_file_to_output(path, output),
-        FlashCardCommand::ConvertSingle { path, output: None } => convert_file(path),
+        FlashCardCommand::ConvertSingle { path, .. } => convert_file(path),
         FlashCardCommand::ConvertAll { path } => convert_all(path),
     }
 }
