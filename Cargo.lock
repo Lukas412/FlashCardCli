@@ -124,21 +124,21 @@ dependencies = [
 ]
 
 [[package]]
-name = "fcards"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "flash_card_parser",
-]
-
-[[package]]
 name = "flash_card_parser"
 version = "0.1.0"
 source = "git+https://github.com/Lukas412/FlashCardParser.git#337af2dfd88b8eac119c2a8408a32efdc8adf512"
 dependencies = [
  "derive_more",
  "nom",
+]
+
+[[package]]
+name = "flashcards"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "flash_card_parser",
 ]
 
 [[package]]
