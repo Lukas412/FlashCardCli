@@ -1,6 +1,7 @@
 use crate::arguments::{FlashCardCli, FlashCardCommand};
 use clap::Parser;
 use flash_card_parser::Topic;
+use serde_json::json;
 use std::fs;
 use std::fs::File;
 use std::io::BufWriter;
@@ -18,12 +19,13 @@ fn main() -> anyhow::Result<()> {
                 Err(error) => panic!("{:?}", error),
             };
             println!("{}", &topic);
-            let csv_file = File::options()
+            let file = File::options()
                 .write(true)
                 .create(true)
                 .truncate(true)
                 .open(json)?;
-            let csv_buffer = BufWriter::new(csv_file);
+            let buffer = BufWriter::new(file);
+            serde_json::to_writer(buffer, &topic)?;
         }
     }
     Ok(())
