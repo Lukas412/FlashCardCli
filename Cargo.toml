@@ -7,3 +7,4 @@ edition = "2021"
 clap =  { version = "4.4.6", features = ["derive"] }
 flash_card_parser = { git = "https://github.com/Lukas412/FlashCardParser.git" }
 anyhow = "1.0.75"
+csv = "1.2.2"
