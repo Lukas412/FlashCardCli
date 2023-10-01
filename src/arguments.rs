@@ -19,6 +19,6 @@ pub(crate) enum FlashCardCommand {
         #[arg(short, long)]
         card: PathBuf,
         #[arg(short, long)]
-        csv: PathBuf,
+        json: PathBuf,
     },
 }
