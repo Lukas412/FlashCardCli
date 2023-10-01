@@ -15,10 +15,14 @@ impl FlashCardCli {
 
 #[derive(Debug, Subcommand)]
 pub(crate) enum FlashCardCommand {
-    Convert {
+    ConvertSingle {
         #[arg(short, long)]
-        card: PathBuf,
+        path: PathBuf,
         #[arg(short, long)]
-        json: PathBuf,
+        output: Option<PathBuf>,
+    },
+    ConvertAll {
+        #[arg(short, long)]
+        path: PathBuf,
     },
 }
